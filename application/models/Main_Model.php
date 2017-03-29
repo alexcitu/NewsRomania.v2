@@ -10,6 +10,7 @@ class Main_Model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->database();
     }
 
     public function getNews($tip)
@@ -170,8 +171,7 @@ class Main_Model extends CI_Model
         }
         else
         {
-            $record = $this->db->select('*')->from('stiri')->from('login')->where('id', $id)->where('stiri.email = login.email');
-            $record = $this->db->get();
+            $record = $this->db->select('*')->from('stiri')->from('login')->where('id', $id)->where('stiri.email = login.email')->get();
             if($record->num_rows() == 1)
             {
                 $record = $record->result();
