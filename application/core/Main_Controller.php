@@ -25,4 +25,13 @@ class Main_Controller extends CI_Controller
         $this->load->view($fileName, $data);
         $this->load->view('Footer' , $data);
     }
+
+    public function notLoggedIn()
+    {
+        if((!isset($_SESSION['reporter']) || $_SESSION['reporter'] != 1) && (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1))
+        {
+            return true;
+        }
+        return false;
+    }
 }

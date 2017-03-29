@@ -14,7 +14,7 @@ class News_Controller extends Main_Controller
 
     public function add_news_view()
     {
-        if((!isset($_SESSION['reporter']) || $_SESSION['reporter'] != 1) && (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1))
+        if($this->notLoggedIn())
         {
             echo "<script> alert('Nu esti logat deci nu poti adauga stiri'); </script>";
             redirect('/login', 'refresh');
@@ -54,7 +54,7 @@ class News_Controller extends Main_Controller
 
     public function edit_news_view()
     {
-        if((!isset($_SESSION['reporter']) || $_SESSION['reporter'] != 1) && (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1))
+        if($this->notLoggedIn())
         {
             echo "<script> alert('Nu esti logat deci nu poti edita stiri'); </script>";
             redirect('/login', 'refresh');
